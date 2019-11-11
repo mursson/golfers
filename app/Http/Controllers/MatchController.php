@@ -65,19 +65,22 @@ class MatchController extends Controller
     public function edit($MatchID){
 
         $match = Match::find($MatchID);
-        //$course = Course::where('id', $match->CourseID)->get();
         $course = Course::find($match->CourseID);
         $holes = Hole::where('CourseID', $match->CourseID)->get();
         $rounds = Round::where('MatchID', $MatchID)->get();
         $users = User::all();
 
-        $roundP1 = $rounds->first();
-        $roundP2 = $rounds->find([1,2])->find([2])->get(1);
+        $roundP1 = Round::find($MatchID)->where('PlayerID',$match->Player1)->get();
+        $roundP2 = Round::find($MatchID)->where('PlayerID',$match->Player2)->get();
+        //$roundP3 = Round::find($MatchID)->where('PlayerID',$match->Player3)->get();
+        //$roundP4 = Round::find($MatchID)->where('PlayerID',$match->Player4)->get();
 
-        //dd(compact('match','users','course','holes','rounds','roundP1','roundP2'));
-        //$scorecardP1 = Scorecard::where('PlayerID', $round->PlayerID)->get();
-        $scorecardP1 = Scorecard::where('PlayerID', $roundP1->PlayerID)->get();
-        $scorecardP2 = Scorecard::where('PlayerID', $roundP2->PlayerID)->get();
+        //dd($roundP1->get(0)->PlayerID);
+
+        $scorecardP1 = Scorecard::where('PlayerID', $roundP1->get(0)->PlayerID)->get();
+        $scorecardP2 = Scorecard::where('PlayerID', $roundP2->get(0)->PlayerID)->get();
+        //$scorecardP3 = Scorecard::where('PlayerID', $roundP3->PlayerID)->get();
+        //$scorecardP4 = Scorecard::where('PlayerID', $roundP4->PlayerID)->get();
 
         //dd(compact('match','users','course','holes','rounds','scorecardP1','scorecardP2','roundP1','roundP2'));
         return view('matches.edit')->with(compact('match','users','course','holes','rounds','scorecardP1','scorecardP2','roundP1','roundP2'));
@@ -106,6 +109,8 @@ class MatchController extends Controller
 
         $roundP1 = $rounds->first();
         $roundP2 = $rounds->find([1,2])->find([2])->get(1);
+        $roundP3 = $rounds->find([1,2,3])->find([3])->get(1);
+        $roundP4 = $rounds->find([1,2,3,4])->find([4])->get(1);
 
         dd(compact('match','users','course','holes','rounds','roundP1','roundP2'));
         //$scorecardP1 = Scorecard::where('PlayerID', $round->PlayerID)->get();
