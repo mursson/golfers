@@ -65,7 +65,8 @@ class MatchController extends Controller
     public function edit($MatchID){
 
         $match = Match::find($MatchID);
-        $course = Course::where('id', $match->CourseID)->get();
+        //$course = Course::where('id', $match->CourseID)->get();
+        $course = Course::find($match->CourseID);
         $holes = Hole::where('CourseID', $match->CourseID)->get();
         $rounds = Round::where('MatchID', $MatchID)->get();
         $users = User::all();
@@ -106,7 +107,7 @@ class MatchController extends Controller
         $roundP1 = $rounds->first();
         $roundP2 = $rounds->find([1,2])->find([2])->get(1);
 
-        //dd(compact('match','users','course','holes','rounds','roundP1','roundP2'));
+        dd(compact('match','users','course','holes','rounds','roundP1','roundP2'));
         //$scorecardP1 = Scorecard::where('PlayerID', $round->PlayerID)->get();
         $scorecardP1 = Scorecard::where('PlayerID', $roundP1->PlayerID)->get();
         $scorecardP2 = Scorecard::where('PlayerID', $roundP2->PlayerID)->get();

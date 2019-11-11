@@ -32,21 +32,25 @@
                 <input type="text" name="Date" class="form-control" value="{{ $match->Date }}">
             </div>
             <div class="form-group">
+                <label for="Course">Course</label>
+                <input type="text" name="Course" class="form-control" value="{{ $course->Name }}">
+            </div>
+            <div class="form-group">
                 <label for="Weather">Weather</label>
                 <input type="text" name="Weather" class="form-control" value="{{ $match->Weather }}">
             </div>
             
             <div class="form-group">
                 <table class="table table-bordered table-striped table-sm">
-                    <thead class="thead-dark">
-                    <tr>
+                    <thead>
+                    <tr class="table-warning">
                         <th>HOLE</th>
                         @foreach ( $holes as $hole )
                             <th>{{ $hole->Number }}</th>
                         @endforeach
                     </tr>
                     </thead>
-                    <thead>
+                    <thead class="thead-light">
                     <tr>
                         <th>DISTANCE</th>
                         @foreach ( $holes as $hole )
@@ -54,7 +58,7 @@
                         @endforeach
                     </tr>
                     </thead>
-                    <thead>
+                    <thead class="thead-light">
                     <tr>
                         <th>HANDICAP</th>
                         @foreach ( $holes as $hole )
@@ -63,7 +67,7 @@
                     </tr>
                     </thead> 
                     <thead>
-                    <tr>
+                    <tr class="table-dark">
                         <th>PAR</th>
                         @foreach ( $holes as $hole )
                             <th>{{ $hole->Par }}</th>
@@ -74,7 +78,7 @@
 
                         @if ( $scorecardP1 )
                         <tr>
-                        <td>{{ $scorecardP1->PlayerID }}</td>
+                        <td>MUR</td>
 
                             @foreach ( $scorecardP1 as $score )
 

@@ -40,7 +40,9 @@ class CourseController extends Controller
 		$course->Par = $request->input('Par');
 		$course->Rating = $request->input('Rating');
 		$course->BogeyRating = $request->input('BogeyRating');
-
+		$course->Location = $request->input('Location');
+		$course->Description = $request->input('Description');
+		
 		$course->save();
 
 		//dd($request->all());
@@ -82,7 +84,8 @@ class CourseController extends Controller
 		$course->Par = $request->input('Par');
 		$course->Rating = $request->input('Rating');
 		$course->BogeyRating = $request->input('BogeyRating');
-
+		$course->Location = $request->input('Location');
+		$course->Description = $request->input('Description');
 
 		$course->save();
 
