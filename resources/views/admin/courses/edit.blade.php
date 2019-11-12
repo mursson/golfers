@@ -25,6 +25,8 @@
                 </div>
             @endif
 
+         <img src="{{$course->Map}}"> 
+
         <form action="" method="POST">
             {{ csrf_field() }}
 

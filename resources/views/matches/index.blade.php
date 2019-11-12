@@ -31,7 +31,10 @@
                 <tr>
                     <td>{{ $match->Date }}</td>
                     <td>{{ $match->Weather }}</td>
-                    <td>{{ $match->RoundPlayer1 }}{{ $match->RoundPlayer2 }}</td>
+                    <td>
+                        {{ $users->find($match->RoundPlayer1)->name }} |
+                        {{ $users->find($match->RoundPlayer2)->name }}
+                    </td>
                     <td>
                         <a href="/matches/{{$match->id}}" class="btn btn-primary btn-sm" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
                         </a>

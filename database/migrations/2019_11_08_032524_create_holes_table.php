@@ -21,7 +21,7 @@ class CreateHolesTable extends Migration
             $table->integer('Distance');
             $table->integer('Handicap');
             $table->string('Picture');
-            $table->string('Map');
+            $table->string('Description');
 
             $table->integer('CourseID')->unsigned()->nullable();
             $table->foreign('CourseID')->references('CourseID')->on('courses');

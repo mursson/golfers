@@ -17,8 +17,8 @@ class HoleTableSeeder extends Seeder
             'Par' => 3,
             'Distance' => 87,
             'Handicap' => 11,
-            'Picture' => '',
-            'Map' => '',
+            'Picture' => 'http://canmascaro.com/wp-content/uploads/2015/12/13-686x1024.jpeg',
+            'Description' => '87m con un ligero desnivel que hace que el green sea difícil de apreciar en su totalidad desde la salida. Se complica si de primer golpe se sobrevuela el green.',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -26,8 +26,8 @@ class HoleTableSeeder extends Seeder
             'Par' => 3,
             'Distance' => 55,
             'Handicap' => 18,
-            'Picture' => '',
-            'Map' => '',
+            'Picture' => 'http://canmascaro.com/wp-content/uploads/2015/12/14-685x1024.jpeg',
+            'Description' => 'Hoyo muy técnico que exige precisión y línea recta. Green protegido a ambos lados por su forma de ‘flan’ y con poco espacio si se falla la salida.',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -36,7 +36,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 63,
             'Handicap' => 5,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -45,7 +45,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 97,
             'Handicap' => 2,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -54,7 +54,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 72,
             'Handicap' => 13,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -63,7 +63,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 78,
             'Handicap' => 6,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -72,7 +72,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 69,
             'Handicap' => 15,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -81,7 +81,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 120,
             'Handicap' => 3,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -90,7 +90,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 61,
             'Handicap' => 17,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]);
         Hole::create([
@@ -99,7 +99,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 81,
             'Handicap' => 7,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -108,7 +108,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 100,
             'Handicap' => 8,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -117,7 +117,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 82,
             'Handicap' => 10,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -126,7 +126,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 70,
             'Handicap' => 14,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -135,7 +135,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 55,
             'Handicap' => 9,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -144,7 +144,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 98,
             'Handicap' => 4,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -153,7 +153,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 65,
             'Handicap' => 16,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -162,7 +162,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 103,
             'Handicap' => 1,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]); 
         Hole::create([
@@ -171,7 +171,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 78,
             'Handicap' => 12,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 1
         ]);
 
@@ -182,7 +182,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 59,
             'Handicap' => 0,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 2
         ]); 
         Hole::create([
@@ -191,7 +191,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 82,
             'Handicap' => 0,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 2
         ]); 
         Hole::create([
@@ -200,7 +200,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 88,
             'Handicap' => 0,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 2
         ]); 
         Hole::create([
@@ -209,7 +209,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 69,
             'Handicap' => 0,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 2
         ]); 
         Hole::create([
@@ -218,7 +218,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 111,
             'Handicap' => 0,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 2
         ]); 
         Hole::create([
@@ -227,7 +227,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 75,
             'Handicap' => 0,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 2
         ]); 
         Hole::create([
@@ -236,7 +236,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 84,
             'Handicap' => 0,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 2
         ]); 
         Hole::create([
@@ -245,7 +245,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 73,
             'Handicap' => 0,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 2
         ]); 
         Hole::create([
@@ -254,7 +254,7 @@ class HoleTableSeeder extends Seeder
             'Distance' => 63,
             'Handicap' => 0,
             'Picture' => '',
-            'Map' => '',
+            'Description' => '',
             'CourseID' => 2
         ]);
     }

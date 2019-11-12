@@ -58,7 +58,8 @@ class HomeController extends Controller
         //dd($user1->id);
 
         $match = new Match();
-        $match->Date = "HOY";
+        $now = date('Y-m-d');
+        $match->Date = $now;
         $match->Weather = $request->input('Weather') ?: null;
         $match->CourseID = $request->input('CourseID');
         $match->CompetitionID = $request->input('CompetitionID') ?: null;

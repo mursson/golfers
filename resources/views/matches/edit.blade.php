@@ -33,18 +33,18 @@
             </div>
             <div class="form-group">
                 <label for="Course">Course</label>
-                <input type="text" name="Course" class="form-control" value="{{ $course->Name }}">
+                <input type="text" name="Course" class="form-control" value="{{ $course->Name }}" disabled>
             </div>
             <div class="form-group">
                 <label for="Weather">Weather</label>
                 <input type="text" name="Weather" class="form-control" value="{{ $match->Weather }}">
             </div>
             
-            <div class="form-group">
-                <table class="table table-bordered table-striped table-sm">
+            <div class="form-group" style="overflow-x:auto;">
+                <table class="table table-bordered table-striped table-sm"cellspacing="0" width="100%">
                     <thead>
                     <tr class="table-warning">
-                        <th>HOLE</th>
+                        <th class="th-sm">HOLE</th>
                         @foreach ( $holes as $hole )
                             <th>{{ $hole->Number }}</th>
                         @endforeach
@@ -73,17 +73,67 @@
                             <th>{{ $hole->Par }}</th>
                         @endforeach
                     </tr>
-                    </thead> 
-                    <tbody>
+                    </thead>
 
-                        @if ( $scorecardP1 )
+                    <tbody>
+                        @if ( $match->Player1 )
                         <tr>
-                        <td>MUR</td>
+                        <td>
+                            {{ $users->find($scorecardP1->get(0)->PlayerID)->name }}
+                        </td>
 
                             @foreach ( $scorecardP1 as $score )
 
                                 <td>
-                                    <input type="text" name="Score{{ $score->id }}" value="{{ $score->Score }}" class="form-control" size="1">
+                                    <input type="text" name="P1Score{{ $score->HoleID }}" value="{{ $score->Score }}" class="form-control form-control-sm" size="1">
+                                </td>
+                                
+                            @endforeach
+
+                        </tr>
+                        @endif
+                        @if ( $match->Player2 )
+                        <tr>
+                        <td>
+                            {{ $users->find($scorecardP2->get(0)->PlayerID)->name }}
+                        </td>
+
+                            @foreach ( $scorecardP2 as $score )
+
+                                <td>
+                                    <input type="text" name="P2Score{{ $score->HoleID }}" value="{{ $score->Score }}" class="form-control form-control-sm" size="1">
+                                </td>
+                                
+                            @endforeach
+
+                        </tr>
+                        @endif
+                        @if ( $match->Player3 )
+                        <tr>
+                        <td>
+                            {{ $users->find($scorecardP3->get(0)->PlayerID)->name }}
+                        </td>
+
+                            @foreach ( $scorecardP3 as $score )
+
+                                <td>
+                                    <input type="text" name="P3Score{{ $score->HoleID }}" value="{{ $score->Score }}" class="form-control form-control-sm" size="1">
+                                </td>
+                                
+                            @endforeach
+
+                        </tr>
+                        @endif
+                        @if ( $match->Player4 )
+                        <tr>
+                        <td>
+                            {{ $users->find($scorecardP4->get(0)->PlayerID)->name }}
+                        </td>
+
+                            @foreach ( $scorecardP4 as $score )
+
+                                <td>
+                                    <input type="text" name="P4Score{{ $score->HoleID }}" value="{{ $score->Score }}" class="form-control form-control-sm" size="1">
                                 </td>
                                 
                             @endforeach

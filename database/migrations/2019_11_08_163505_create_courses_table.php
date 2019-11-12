@@ -22,7 +22,8 @@ class CreateCoursesTable extends Migration
             $table->integer('Rating');
             $table->integer('BogeyRating');
             $table->string('Location',100);
-            $table->string('Description',100);
+            $table->string('Description',1000);
+            $table->string('Map',100);
 
             $table->timestamps();
         });
