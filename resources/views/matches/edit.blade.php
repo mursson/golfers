@@ -48,6 +48,7 @@
                         @foreach ( $holes as $hole )
                             <th>{{ $hole->Number }}</th>
                         @endforeach
+                        <th>TOTAL</th>
                     </tr>
                     </thead>
                     <thead class="thead-light">
@@ -56,6 +57,7 @@
                         @foreach ( $holes as $hole )
                             <th>{{ $hole->Distance }}</th>
                         @endforeach
+                        <th></th>
                     </tr>
                     </thead>
                     <thead class="thead-light">
@@ -64,6 +66,7 @@
                         @foreach ( $holes as $hole )
                             <th>{{ $hole->Handicap }}</th>
                         @endforeach
+                        <th></th>
                     </tr>
                     </thead> 
                     <thead>
@@ -72,15 +75,16 @@
                         @foreach ( $holes as $hole )
                             <th>{{ $hole->Par }}</th>
                         @endforeach
+                        <th></th>
                     </tr>
                     </thead>
 
                     <tbody>
                         @if ( $match->Player1 )
                         <tr>
-                        <td>
-                            {{ $users->find($scorecardP1->get(0)->PlayerID)->name }}
-                        </td>
+                            <td>
+                                {{ $users->find($scorecardP1->get(0)->PlayerID)->name }}
+                            </td>
 
                             @foreach ( $scorecardP1 as $score )
 
@@ -90,6 +94,9 @@
                                 
                             @endforeach
 
+                            <td>
+                                {{ $roundP1->get(0)->TotalScore }}
+                            </td>
                         </tr>
                         @endif
                         @if ( $match->Player2 )
@@ -105,7 +112,9 @@
                                 </td>
                                 
                             @endforeach
-
+                            <td>
+                                {{ $roundP2->get(0)->TotalScore }}
+                            </td>
                         </tr>
                         @endif
                         @if ( $match->Player3 )
@@ -121,7 +130,9 @@
                                 </td>
                                 
                             @endforeach
-
+                            <td>
+                                {{ $roundP3->get(0)->TotalScore }}
+                            </td>
                         </tr>
                         @endif
                         @if ( $match->Player4 )
@@ -137,7 +148,9 @@
                                 </td>
                                 
                             @endforeach
-
+                            <td>
+                                {{ $roundP4->get(0)->TotalScore }}
+                            </td>
                         </tr>
                         @endif
                     </tbody>

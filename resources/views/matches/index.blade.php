@@ -21,6 +21,7 @@
             <thead>
             <tr>
                 <th>Date</th>
+                <th>Round</th>
                 <th>Weather</th>
                 <th>Players</th>
                 <th>Opciones</th>
@@ -30,10 +31,13 @@
                 @foreach ( $matches as $match )
                 <tr>
                     <td>{{ $match->Date }}</td>
+                    <td>{{ $rounds->get(0)->NumRonda }}</td>
                     <td>{{ $match->Weather }}</td>
                     <td>
-                        {{ $users->find($match->RoundPlayer1)->name }} |
-                        {{ $users->find($match->RoundPlayer2)->name }}
+                        {{ $users->find($match->Player1)->name }} |
+                        {{ $users->find($match->Player2)->name }} |
+                        {{ $users->find($match->Player3)->name }} |
+                        {{ $users->find($match->Player4)->name }}
                     </td>
                     <td>
                         <a href="/matches/{{$match->id}}" class="btn btn-primary btn-sm" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>

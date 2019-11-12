@@ -31,8 +31,9 @@ class MatchController extends Controller
     {
         $matches = Match::all();
         $users =User::all();
+        $rounds =Round::all();
         
-        return view('matches.index')->with(compact('users','matches'));;
+        return view('matches.index')->with(compact('users','matches','rounds'));;
     }
 
     public function store(Request $request){
@@ -137,14 +138,20 @@ class MatchController extends Controller
             $scorecardP1 = Scorecard::where('PlayerID', $roundP1->get(0)->PlayerID)->get();
 
             $j=1;
+            $totalP1=0;$totalP2=0;$totalP3=0;$totalP4=0;
+
             for($i=0; $i<18;$i++){
 
                     $score= $scorecardP1->get($i);
 
                     $score->Score = $request->input('P1Score'.$j);
+                    $totalP1= $totalP1 + $score->Score;
+
                     $score->save();
                     $j++;
             }
+            $roundP1->get(0)->TotalScore= $totalP1;
+            $roundP1->get(0)->save();
         }
         if (count($roundP2) > 0) {
 
@@ -159,6 +166,8 @@ class MatchController extends Controller
                     $score->save();
                     $j++;
             }
+            $roundP2->get(0)->TotalScore= $totalP2;
+            $roundP2->get(0)->save();
         }
         if (count($roundP3) > 0) {
 
@@ -173,6 +182,8 @@ class MatchController extends Controller
                     $score->save();
                     $j++;
             }
+            $roundP3->get(0)->TotalScore= $totalP3;
+            $roundP3->get(0)->save();
         }
         if (count($roundP4) > 0) {
 
@@ -187,6 +198,8 @@ class MatchController extends Controller
                     $score->save();
                     $j++;
             }
+            $roundP4->get(0)->TotalScore= $totalP4;
+            $roundP4->get(0)->save();
         }
 
         $match->save();
