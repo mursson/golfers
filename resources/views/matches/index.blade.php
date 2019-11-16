@@ -17,7 +17,7 @@
             @endif
         </div>
 
-        <table class="table table-bordered">
+        <table class="table table-striped table-bordered table-sm" cellspacing="0" width="100%">
             <thead>
             <tr>
                 <th>Date</th>
@@ -31,7 +31,7 @@
                 @foreach ( $matches as $match )
                 <tr>
                     <td>{{ $match->Date }}</td>
-                    <td>{{ $rounds->get(0)->NumRonda }}</td>
+                    <td></td>
                     <td>{{ $match->Weather }}</td>
                     <td>
                         {{ $users->find($match->Player1)->name }} |
@@ -41,6 +41,9 @@
                     </td>
                     <td>
                         <a href="/matches/{{$match->id}}" class="btn btn-primary btn-sm" title="Editar"><span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+                        </a>
+                        <a href="#">
+                        <span class="glyphicon glyphicon-pencil"></span>
                         </a>
                         <a href="/matches/{{$match->id}}/eliminar" class="btn btn-danger btn-sm" title="Dar de baja"><span class="glyphicon glyphicon-remove"></span></a>
                     </td>

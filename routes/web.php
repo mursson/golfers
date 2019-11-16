@@ -51,5 +51,23 @@ Route::group(['middleware' => 'admin', 'namespace' => 'Admin'],  function(){
 
 	Route::get('/courses/{CourseID}/eliminar', 'CourseController@delete');
 
+	//Rutas Holes
+	Route::get('/courses/{CourseID}/holes', 'HoleController@index');
+	Route::post('/courses/{CourseID}/holes', 'HoleController@store');
+
+	Route::get('/courses/{CourseID}/holes/{HoleID}', 'HoleController@edit');
+	Route::post('/courses/{CourseID}/holes/{HoleID}', 'HoleController@update');
+
+	Route::get('/courses/{CourseID}/holes/{HoleID}/eliminar', 'HoleController@delete');
+
+	//Rutas Courses
+	Route::get('/competitions', 'CompetitionController@index');
+	Route::post('/competitions', 'CompetitionController@store');
+
+	Route::get('/competitions/{CompetitionID}', 'CompetitionController@edit');
+	Route::post('/competitions/{CompetitionID}', 'CompetitionController@update');
+
+	Route::get('/competitions/{CompetitionID}/eliminar', 'CompetitionController@delete');
+	
 	//Route::get('/config', 'ConfigController@index');	
 });

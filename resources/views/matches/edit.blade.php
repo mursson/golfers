@@ -36,6 +36,10 @@
                 <input type="text" name="Course" class="form-control" value="{{ $course->Name }}" disabled>
             </div>
             <div class="form-group">
+                <label for="NumRound">Round</label>
+                <input type="text" name="NumRound" class="form-control" value="{{ $NumRonda }}">
+            </div>
+            <div class="form-group">
                 <label for="Weather">Weather</label>
                 <input type="text" name="Weather" class="form-control" value="{{ $match->Weather }}">
             </div>
@@ -43,16 +47,16 @@
             <div class="form-group" style="overflow-x:auto;">
                 <table class="table table-bordered table-striped table-sm"cellspacing="0" width="100%">
                     <thead>
-                    <tr class="table-warning">
-                        <th class="th-sm">HOLE</th>
+                    <tr class="table-dark">
+                        <th>HOLE</th>
                         @foreach ( $holes as $hole )
                             <th>{{ $hole->Number }}</th>
                         @endforeach
                         <th>TOTAL</th>
                     </tr>
                     </thead>
-                    <thead class="thead-light">
-                    <tr>
+                    <thead>
+                    <tr class="table-danger">
                         <th>DISTANCE</th>
                         @foreach ( $holes as $hole )
                             <th>{{ $hole->Distance }}</th>
@@ -60,8 +64,8 @@
                         <th></th>
                     </tr>
                     </thead>
-                    <thead class="thead-light">
-                    <tr>
+                    <thead>
+                    <tr class="table-warning">
                         <th>HANDICAP</th>
                         @foreach ( $holes as $hole )
                             <th>{{ $hole->Handicap }}</th>
@@ -70,12 +74,12 @@
                     </tr>
                     </thead> 
                     <thead>
-                    <tr class="table-dark">
+                    <tr class="table-light">
                         <th>PAR</th>
                         @foreach ( $holes as $hole )
                             <th>{{ $hole->Par }}</th>
                         @endforeach
-                        <th></th>
+                        <th>{{ $course->Par }}</th>
                     </tr>
                     </thead>
 

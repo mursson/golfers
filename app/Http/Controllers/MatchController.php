@@ -67,37 +67,44 @@ class MatchController extends Controller
 
         $match = Match::find($MatchID);
         $course = Course::find($match->CourseID);
+
         $holes = Hole::where('CourseID', $match->CourseID)->get();
-        $rounds = Round::where('MatchID', $MatchID)->get();
         $users = User::all();
+        $rounds = Round::where('MatchID', $MatchID)->get();
+        $scores = Scorecard::where('RoundID', $match->CourseID)->get();
 
-        $roundP1 = Round::find($MatchID)->where('PlayerID',$match->Player1)->get();
-        $roundP2 = Round::find($MatchID)->where('PlayerID',$match->Player2)->get();
-        $roundP3 = Round::find($MatchID)->where('PlayerID',$match->Player3)->get();
-        $roundP4 = Round::find($MatchID)->where('PlayerID',$match->Player4)->get();
+        $roundP1 = Round::where('MatchID', $MatchID)->where('PlayerID',$match->Player1)->get();
+        $roundP2 = Round::where('MatchID', $MatchID)->where('PlayerID',$match->Player2)->get();
+        $roundP3 = Round::where('MatchID', $MatchID)->where('PlayerID',$match->Player3)->get();
+        $roundP4 = Round::where('MatchID', $MatchID)->where('PlayerID',$match->Player4)->get();
 
+        if ($roundP1!=null && $roundP2!=null && $roundP3!=null && $roundP4!=null) {
 
-        if (count($roundP1) > 0 && count($roundP2) > 0 && count($roundP3) > 0 && count($roundP4) > 0) {
-            $scorecardP1 = Scorecard::where('PlayerID', $roundP1->get(0)->PlayerID)->get();
-            $scorecardP2 = Scorecard::where('PlayerID', $roundP2->get(0)->PlayerID)->get();
-            $scorecardP3 = Scorecard::where('PlayerID', $roundP3->get(0)->PlayerID)->get();
-            $scorecardP4 = Scorecard::where('PlayerID', $roundP4->get(0)->PlayerID)->get();
+            $scorecardP1 = Scorecard::where('RoundID', $roundP1->get(0)->NumRonda)->where('PlayerID',$match->Player1)->get();
+            $scorecardP2 = Scorecard::where('RoundID', $roundP2->get(0)->NumRonda)->where('PlayerID',$match->Player2)->get();
+            $scorecardP3 = Scorecard::where('RoundID', $roundP3->get(0)->NumRonda)->where('PlayerID',$match->Player3)->get();
+            $scorecardP4 = Scorecard::where('RoundID', $roundP4->get(0)->NumRonda)->where('PlayerID',$match->Player4)->get();   
+
+            $NumRonda= $rounds->where('PlayerID',$match->Player1)->get(0)->NumRonda;
 
             //dd(compact('match','users','course','holes','rounds','scorecardP1','scorecardP2','scorecardP3','scorecardP4','roundP1','roundP2','roundP3','roundP4'));
-            return view('matches.edit')->with(compact('match','users','course','holes','rounds','scorecardP1','scorecardP2','scorecardP3','scorecardP4','roundP1','roundP2','roundP3','roundP4'));            
+
+            return view('matches.edit')->with(compact('match','users','course','holes','rounds','scorecardP1','scorecardP2','scorecardP3','scorecardP4','roundP1','roundP2','roundP3','roundP4','NumRonda'));
         }
-        if (count($roundP1) > 0 && count($roundP2) > 0 && count($roundP3) > 0 && count($roundP4) == 0) {
-            $scorecardP1 = Scorecard::where('PlayerID', $roundP1->get(0)->PlayerID)->get();
-            $scorecardP2 = Scorecard::where('PlayerID', $roundP2->get(0)->PlayerID)->get();
-            $scorecardP3 = Scorecard::where('PlayerID', $roundP3->get(0)->PlayerID)->get();
+        if ($roundP1!=null && $roundP2!=null && $roundP3!=null && $roundP4==null) {
+
+            $scorecardP1 = Scorecard::where('RoundID', $roundP1->get(0)->NumRonda)->where('PlayerID',$match->Player1)->get();
+            $scorecardP2 = Scorecard::where('RoundID', $roundP2->get(0)->NumRonda)->where('PlayerID',$match->Player2)->get();
+            $scorecardP3 = Scorecard::where('RoundID', $roundP3->get(0)->NumRonda)->where('PlayerID',$match->Player3)->get();
             
             //dd(compact('match','users','course','holes','rounds','scorecardP1','scorecardP2','scorecardP3','roundP1','roundP2','roundP3'));
             return view('matches.edit')->with(compact('match','users','course','holes','rounds','scorecardP1','scorecardP2','scorecardP3','roundP1','roundP2','roundP3'));
         }
-        if (count($roundP1) > 0 && count($roundP2) > 0 && count($roundP3) == 0 && count($roundP4) == 0) {
-            $scorecardP1 = Scorecard::where('PlayerID', $roundP1->get(0)->PlayerID)->get();
-            $scorecardP2 = Scorecard::where('PlayerID', $roundP2->get(0)->PlayerID)->get();
-                     
+        if ($roundP1!=null && $roundP2!=null && $roundP3==null && $roundP4==null) {
+
+            $scorecardP1 = Scorecard::where('RoundID', $roundP1->get(0)->NumRonda)->where('PlayerID',$match->Player1)->get();
+            $scorecardP2 = Scorecard::where('RoundID', $roundP2->get(0)->NumRonda)->where('PlayerID',$match->Player2)->get();
+
             //dd(compact('match','users','course','holes','rounds','scorecardP1','scorecardP2','roundP1','roundP2'));
             return view('matches.edit')->with(compact('match','users','course','holes','rounds','scorecardP1','scorecardP2','roundP1','roundP2'));
         }
@@ -128,14 +135,16 @@ class MatchController extends Controller
         $match->Date = $request->input('Date');
         $match->Weather = $request->input('Weather');
 
-        $roundP1 = Round::find($MatchID)->where('PlayerID',$match->Player1)->get();
-        $roundP2 = Round::find($MatchID)->where('PlayerID',$match->Player2)->get();
-        $roundP3 = Round::find($MatchID)->where('PlayerID',$match->Player3)->get();
-        $roundP4 = Round::find($MatchID)->where('PlayerID',$match->Player4)->get();
+        $roundP1 = Round::where('MatchID', $MatchID)->where('PlayerID',$match->Player1)->get();
+        $roundP2 = Round::where('MatchID', $MatchID)->where('PlayerID',$match->Player2)->get();
+        $roundP3 = Round::where('MatchID', $MatchID)->where('PlayerID',$match->Player3)->get();
+        $roundP4 = Round::where('MatchID', $MatchID)->where('PlayerID',$match->Player4)->get();
 
-        if (count($roundP1) > 0) {
+        if ($roundP1 != null) {
 
-            $scorecardP1 = Scorecard::where('PlayerID', $roundP1->get(0)->PlayerID)->get();
+            $scorecardP1 = Scorecard::where('RoundID', $roundP1->get(0)->NumRonda)->where('PlayerID',$match->Player1)->get();
+
+            //dd($scorecardP1);
 
             $j=1;
             $totalP1=0;$totalP2=0;$totalP3=0;$totalP4=0;
@@ -153,9 +162,9 @@ class MatchController extends Controller
             $roundP1->get(0)->TotalScore= $totalP1;
             $roundP1->get(0)->save();
         }
-        if (count($roundP2) > 0) {
+        if ($roundP2 != null) {
 
-            $scorecardP2 = Scorecard::where('PlayerID', $roundP2->get(0)->PlayerID)->get();
+            $scorecardP2 = Scorecard::where('RoundID', $roundP2->get(0)->NumRonda)->where('PlayerID',$match->Player2)->get();
 
             $j=1;
             for($i=0; $i<18;$i++){
@@ -163,15 +172,17 @@ class MatchController extends Controller
                     $score= $scorecardP2->get($i);
 
                     $score->Score = $request->input('P2Score'.$j);
+                    $totalP2= $totalP2 + $score->Score;
+
                     $score->save();
                     $j++;
             }
             $roundP2->get(0)->TotalScore= $totalP2;
             $roundP2->get(0)->save();
         }
-        if (count($roundP3) > 0) {
+        if ($roundP3 != null) {
 
-            $scorecardP3 = Scorecard::where('PlayerID', $roundP3->get(0)->PlayerID)->get();
+            $scorecardP3 = Scorecard::where('RoundID', $roundP3->get(0)->NumRonda)->where('PlayerID',$match->Player3)->get();
 
             $j=1;
             for($i=0; $i<18;$i++){
@@ -179,15 +190,17 @@ class MatchController extends Controller
                     $score= $scorecardP3->get($i);
 
                     $score->Score = $request->input('P3Score'.$j);
+                    $totalP3= $totalP3 + $score->Score;
+
                     $score->save();
                     $j++;
             }
             $roundP3->get(0)->TotalScore= $totalP3;
             $roundP3->get(0)->save();
         }
-        if (count($roundP4) > 0) {
+        if ($roundP4!=null) {
 
-            $scorecardP4 = Scorecard::where('PlayerID', $roundP4->get(0)->PlayerID)->get();
+            $scorecardP4 = Scorecard::where('RoundID', $roundP4->get(0)->NumRonda)->where('PlayerID',$match->Player4)->get();
 
             $j=1;
             for($i=0; $i<18;$i++){
@@ -195,6 +208,8 @@ class MatchController extends Controller
                     $score= $scorecardP4->get($i);
 
                     $score->Score = $request->input('P4Score'.$j);
+                    $totalP4= $totalP4 + $score->Score;
+
                     $score->save();
                     $j++;
             }
